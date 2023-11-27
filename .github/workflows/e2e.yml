@@ -1,0 +1,37 @@
+name: e2e
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start Keycloak
+        run: ./bin/start-keycloak.sh -d
+
+      - name: Wait for Keycloak to start
+        run: ./bin/wait-keycloak.sh
+
+      - name: Import realms
+        run: ./bin/import-keycloak.sh
+
+      - name: Run tests
+        run: npm run test -- --coverage
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      - run: docker kill keycloak-authz-client
+        if: always()

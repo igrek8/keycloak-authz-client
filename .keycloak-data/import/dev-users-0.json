@@ -1,0 +1,38 @@
+{
+  "realm" : "dev",
+  "users" : [ {
+    "id" : "15a72d1b-d00b-4a40-b985-5db174d3dadf",
+    "createdTimestamp" : 1701074912025,
+    "username" : "j.doe@example.org",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "John",
+    "lastName" : "Doe",
+    "email" : "j.doe@example.org",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-dev" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "183ebb65-c420-496c-b086-453ceda13ecb",
+    "createdTimestamp" : 1701015136070,
+    "username" : "service-account-test-client",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "test-client",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-dev" ],
+    "clientRoles" : {
+      "realm-management" : [ "manage-authorization", "view-authorization" ],
+      "test-client" : [ "uma_protection" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}
